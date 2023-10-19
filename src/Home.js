@@ -1,8 +1,8 @@
 import React from 'react';
 import './Home.css';
 import { Link } from "react-router-dom";
-import AppsIcon from "@material-ui/icons/Apps";
-import { Avatar } from "@material-ui/core";
+import AppsIcon from "@mui/icons-material/Apps";
+// import { Avatar } from "@material-ui/core";
 import Search from './Search';
 //import { Tooltip } from '@material-ui/core';
 //import Avatar from '@mui/material/Avatar';
@@ -26,7 +26,7 @@ function Home() {
                 <AppsIcon />
                 {/* </Tooltip> */}
                 {/* <Tooltip title="Google Account"> */}
-                  <Avatar />
+                  {/* <Avatar /> */}
                 {/* </Tooltip> */}
             </div>
 

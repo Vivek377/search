@@ -1,22 +1,22 @@
 import React, { useState } from 'react';
 import './Search.css';
-import SearchIcon from "@material-ui/icons/Search";
-import MicIcon from "@material-ui/icons/Mic";
-import { Button } from "@material-ui/core";
-//import { Tooltip } from '@material-ui/core';
+import SearchIcon from "@mui/icons-material/Search";
+import MicIcon from "@mui/icons-material/Mic";
 import { useHistory } from 'react-router-dom';
 import { useStateValue } from './StateProvider';
 import { actionTypes } from './reducer';
 
-function Search({ hideButtons = false }) {
+function Search({ hideButtons = false,stateParam }) {
     const [{ }, dispatch] = useStateValue();
     const [input, setInput] = useState("");
     const history = useHistory();
+
+
     const search = (e) => {
         e.preventDefault();
-        console.log('You hit the Google Search button : ', input);
 
-        //history.push('/search');
+        history.push(`/search?q=${input}`);
+
         dispatch({
             // eslint-disable-next-line
             type: actionTypes.SET_SEARCH_TERM,
@@ -24,16 +24,18 @@ function Search({ hideButtons = false }) {
         });
 
         //input to output
-        history.push('/search');
+        history.push(`/search?q=${input}`);
 
     };
+
+    
 
     return (
         <form className='search'>
             <div className='search__input'>
                 <SearchIcon className='search__inputIcon' />
                 {/* <Tooltip title="Search"> */}
-                <input value={input} onChange={(e) => setInput(e.target.value)} />
+                <input value={stateParam ? stateParam : input} onChange={(e) => setInput(e.target.value)} />
                 {/* </Tooltip> */}
 
                 {/* <Tooltip title="Search by voice"> */}
@@ -43,13 +45,13 @@ function Search({ hideButtons = false }) {
 
             {!hideButtons ? (
                 <div className='search__buttons'>
-                    <Button type='submit' onClick={search} variant="outlined">Google Search</Button>
-                    <Button variant="outlined">I'm Feeling Lucky</Button>
+                    <button type='submit' onClick={search} variant="outlined">Google Search</button>
+                    <button variant="outlined">I'm Feeling Lucky</button>
                 </div>
             ) : (
                 <div className='search__buttons'>
-                    <Button className='search__buttonsHidden' type='submit' onClick={search} variant="outlined" >Google Search</Button>
-                    <Button className='search__buttonsHidden' variant="outlined" >I'm Feeling Lucky</Button>
+                    <button className='search__buttonsHidden' type='submit' onClick={input.length && search} variant="outlined" >Google Search</button>
+                    <button className='search__buttonsHidden' variant="outlined" >I'm Feeling Lucky</button>
                 </div>
             )}
 

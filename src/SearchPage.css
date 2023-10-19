@@ -17,7 +17,9 @@
     margin-right: 50px;
 }
 
-
+.sidebar {
+    background: pink;
+}
 
 .searchPage__headerBody > .search > .search__input {
     margin-top: 0;
@@ -87,14 +89,26 @@
 }
 
 .searchPage__resultTitle:hover {
-    text-decoration: underline;
+    text-decoration: underline blue;
 }
 
 .searchPage__resultTitle > h2 {
     font-weight: 500;
+    color: blue;
 }
 
 .searchPage__resultSnippet {
     margin-top: 10px;
 }
 
+searchPage__result:hover{
+    cursor: pointer;
+}
+
+.searchPage__displayLink {
+    color: blue;
+}
+
+.searchPage__displayLink:hover{
+    text-decoration: underline blue;
+}
